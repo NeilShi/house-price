@@ -1,11 +1,13 @@
 package houseprice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import houseprice.domain.Community;
 import houseprice.nonentity.criteria.SearchCommunityCriteria;
 import houseprice.nonentity.result.SearchCommunityInfoResult;
 import houseprice.nonentity.vo.CommunityInfoVo;
 import houseprice.service.CommunityInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,10 +23,10 @@ public class CommunityPriceController {
     @Autowired
     private CommunityInfoService communityInfoService;
 
-    @RequestMapping("/search")
-    public SearchCommunityInfoResult searchCommunityInfo(@RequestBody SearchCommunityCriteria criteria) {
+    @RequestMapping("/crawling")
+    public SearchCommunityInfoResult crawlingCommunityInfo(@RequestBody SearchCommunityCriteria criteria) {
         SearchCommunityInfoResult result = new SearchCommunityInfoResult();
-        List<CommunityInfoVo> communityInfoVoList = communityInfoService.searchCommunityInfo(criteria);
+        List<CommunityInfoVo> communityInfoVoList = communityInfoService.crawlCommunityInfo(criteria);
         result.setSuccess(true);
         result.setCommunityInfoVoList(communityInfoVoList);
         try {
@@ -33,5 +35,10 @@ public class CommunityPriceController {
             // todo
         }
         return result;
+    }
+
+    @RequestMapping("/search/{id}")
+    public Community searchCommunity(@PathVariable("id") String id) {
+        return communityInfoService.searchCommunity(id);
     }
 }
