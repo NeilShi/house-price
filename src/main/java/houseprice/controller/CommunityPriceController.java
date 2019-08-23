@@ -27,6 +27,7 @@ public class CommunityPriceController {
     public SearchCommunityInfoResult crawlingCommunityInfo(@RequestBody SearchCommunityCriteria criteria) {
         SearchCommunityInfoResult result = new SearchCommunityInfoResult();
         List<CommunityInfoVo> communityInfoVoList = communityInfoService.crawlCommunityInfo(criteria);
+        communityInfoService.saveCommunity(communityInfoVoList);
         result.setSuccess(true);
         result.setCommunityInfoVoList(communityInfoVoList);
         try {
