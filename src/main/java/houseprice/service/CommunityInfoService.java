@@ -39,4 +39,9 @@ public class CommunityInfoService {
     public Community searchCommunity(String id) {
         return communityDao.findCommunityById(id);
     }
+
+    @Transactional
+    public void saveCommunity(List<CommunityInfoVo> communityInfoVoList) {
+        communityDao.insertCommunityList(communityInfoVoList);
+    }
 }
