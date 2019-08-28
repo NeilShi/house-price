@@ -41,7 +41,7 @@ public class CommunityInfoService {
     }
 
     @Transactional
-    public void saveCommunity(List<CommunityInfoVo> communityInfoVoList) {
-        communityDao.insertCommunityList(communityInfoVoList);
+    public int saveCommunity(List<CommunityInfoVo> communityInfoVoList) {
+        return communityDao.insertCommunityList(communityInfoVoList);
     }
 }
