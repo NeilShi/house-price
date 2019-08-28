@@ -10,6 +10,8 @@ public class CommunityInfoVo {
     private String price;
     private String on_sale;
 
+    public CommunityInfoVo() {}
+
     public CommunityInfoVo(int year, int month, String city, String district, String area,
                            String name, String price, String on_sale) {
         this.year = year;
