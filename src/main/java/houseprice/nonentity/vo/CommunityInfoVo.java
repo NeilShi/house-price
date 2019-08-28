@@ -10,6 +10,18 @@ public class CommunityInfoVo {
     private String price;
     private String on_sale;
 
+    public CommunityInfoVo(int year, int month, String city, String district, String area,
+                           String name, String price, String on_sale) {
+        this.year = year;
+        this.month = month;
+        this.city = city;
+        this.district = district;
+        this.area = area;
+        this.name = name;
+        this.price = price;
+        this.on_sale = on_sale;
+    }
+
     public int getYear() {
         return year;
     }
