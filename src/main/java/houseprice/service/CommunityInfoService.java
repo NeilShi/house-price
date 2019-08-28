@@ -1,5 +1,6 @@
 package houseprice.service;
 
+import houseprice.annotation.RedisCache;
 import houseprice.dao.CommunityDao;
 import houseprice.domain.Community;
 import houseprice.nonentity.criteria.SearchCommunityCriteria;
@@ -36,6 +37,7 @@ public class CommunityInfoService {
     }
 
     @Transactional(readOnly = true)
+    @RedisCache
     public Community searchCommunity(String id) {
         return communityDao.findCommunityById(id);
     }
