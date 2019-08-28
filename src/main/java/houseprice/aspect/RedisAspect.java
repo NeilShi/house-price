@@ -56,7 +56,7 @@ public class RedisAspect {
         LOGGER.info("**********没有从Redis查到数据**********");
 
         try {
-            joinPoint.proceed();
+            obj = joinPoint.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class RedisAspect {
         if("OK".equals(code)) {
             LOGGER.info("**********数据成功保存到Redis缓存!!!**********");
             LOGGER.info("Redis的KEY值:" + redisKey);
-            LOGGER.info("Redis的VALUE值:" + obj.toString());
+            LOGGER.info("Redis的VALUE值:" + obj);
         }
         return obj;
     }

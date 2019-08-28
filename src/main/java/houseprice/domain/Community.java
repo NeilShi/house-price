@@ -1,6 +1,8 @@
 package houseprice.domain;
 
-public class Community {
+import java.io.Serializable;
+
+public class Community implements Serializable {
     private int id;
     private int year;
     private int month;
