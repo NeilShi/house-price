@@ -14,7 +14,7 @@ import redis.clients.jedis.JedisPoolConfig;
 @EnableCaching
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
-    Logger logger = LoggerFactory.getLogger(RedisCacheConfig.class);
+    private Logger logger = LoggerFactory.getLogger(RedisCacheConfig.class);
 
     @Value("${spring.redis.host}")
     private String host;
@@ -42,7 +42,7 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         jedisPoolConfig.setMaxIdle(maxIdle);
         jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
 
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout);
 
         return jedisPool;
     }
