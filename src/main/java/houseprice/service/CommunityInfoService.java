@@ -6,6 +6,7 @@ import houseprice.domain.Community;
 import houseprice.nonentity.criteria.SearchCommunityCriteria;
 import houseprice.nonentity.vo.CommunityInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +24,8 @@ public class CommunityInfoService {
     @Autowired
     private CommunityDao communityDao;
 
-    private static final String URL = "http://127.0.0.1:5000/community";
+    @Value("${spider.community.url}")
+    private String URL;
 
     public List<CommunityInfoVo> crawlCommunityInfo(SearchCommunityCriteria criteria) {
         RestTemplate restTemplate = new RestTemplate();
